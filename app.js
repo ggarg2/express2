@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const app = express();
+const router = express.Router();
+const bookRouter = require("./routers/book-router")
 
 gm3 = require('./middleware/middleware-1')
 
@@ -111,6 +113,7 @@ app.post('/admin', (req, res, next) => {
 // /ab?de => abde, ade
 // "/ab+de" ==> abde, abbbbbbbbde
 //"/ab*de" ==> abdkjsdhlde
+// /a(bd)?e ==> Ternary operator on parenthesis value
 app.route("/a(bd)?e").get((req, res, next)=> {
     res.send("Get is working 1")
 }).post((req, res, next) => {
@@ -121,20 +124,29 @@ app.route("/a(bd)?e").get((req, res, next)=> {
     res.send("delete is working")
 })
 
-app.get('/', (req, res, next) => {
+
+app.use("/rest/api", router)
+app.use("/rest/api/books", bookRouter)
+
+router.get('/', (req, res, next) => {
+    console.log("Root route of rest api")
+    res.send("Root route oof rest api")   
+})
+
+router.get('/city', (req, res, next) => {
     console.log("Get method is working")
     res.send("Get method is working")   
 })
 
-app.post('/', (req, res, next) => {
+router.post('/city', (req, res, next) => {
     res.send("Post is working")
 })
 
-app.put('/', (req, res, next) => {
+router.put('/city', (req, res, next) => {
     res.send("Put is working")
 })
 
-app.delete('/', (req, res, next) => {
+router.delete('/city', (req, res, next) => {
     res.send("delete is working")
 })
 
