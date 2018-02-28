@@ -1,0 +1,8 @@
+{
+    // Host module configs
+    "appConfig": {
+      "hostConfig": {
+          "port": 4000
+      }
+    }
+  }
