@@ -5,6 +5,7 @@ const indexRoutes = require("./routes/index")
 const config = require('config');
 const globalErrorHandler = require("./error-handlers/global-error-handler")
 const cors = require("cors");
+const mongoose = require("./config/mongodb.config")
 
 let hostConfig = config.get('appConfig.hostConfig');
 

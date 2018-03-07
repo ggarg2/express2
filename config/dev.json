@@ -3,6 +3,9 @@
     "appConfig": {
       "hostConfig": {
           "port": 4000
+      },
+      "dbConfig": {
+        "url": "mongodb://localhost/db3"
       }
     }
   }
