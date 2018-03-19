@@ -6,6 +6,7 @@ const config = require('config');
 const globalErrorHandler = require("./error-handlers/global-error-handler")
 const cors = require("cors");
 const mongoose = require("./config/mongodb.config")
+const firebaseAuthMiddleware = require("./config/firebase.config")
 
 let hostConfig = config.get('appConfig.hostConfig');
 
@@ -15,15 +16,16 @@ app.use(bodyParser.json())
 
 app.use(cors())
 
+app.use(firebaseAuthMiddleware)
+
 app.use(indexRoutes)
 
-app.get("/", (req, res, next)=> {
+app.get("/", (req, res, next) => {
     res.send("Hello User");
 })
 
 app.use(globalErrorHandler)
 
-app.listen(PORT, ()=>{
-    console.log("App server is started at port "+PORT)
+app.listen(PORT, () => {
+    console.log("App server is started at port " + PORT)
 })
-

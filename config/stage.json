@@ -1,11 +1,15 @@
 {
     // Host module configs
     "appConfig": {
-      "hostConfig": {
-          "port": 5000
-      },
-      "dbConfig": {
-        "url": "mongodb://localhost/db3"
-      }
+        "hostConfig": {
+            "port": 5000
+        },
+        "dbConfig": {
+            "url": "mongodb://localhost/db3"
+        },
+        "firebaseConfig": {
+            "dburl": "https://my-proj12.firebaseio.com",
+            "serviceAccountJsonFilePath": "my-proj12-firebase-adminsdk-4izho-4b8a8f81fa.json"
+        }
     }
-  }
+}
